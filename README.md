@@ -1,73 +1,143 @@
-# Welcome to your Lovable project
+# The First Black Box — Photography Portfolio Presentation
 
-## Project info
+A dark-themed, slide-based interactive presentation exploring photography as a QA process. Features an immersive "Hardware Evolution Lab" with three iconic camera models, interactive learning mechanics, and cinematic vertical parallax navigation.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Features
 
-## How can I edit this code?
+### Slide 1: Title Screen
+- Minimalist typography with elegant serif/mono font pairing
+- Subtitle: "Photography as a QA Process" with subtle fade-in animation
+- Dark background with subtle ambient grain texture
+- Down arrow indicator pulsing to invite navigation
 
-There are several ways of editing your application.
+### Slide 2: The Hardware Evolution Lab
+**"The Evolution of the Machine"**
 
-**Use Lovable**
+A chronological timeline showing the technical evolution of cameras, with 3 selectable devices.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+#### Timeline Navigation
+- Horizontal timeline bar showing: V0 → V1 → V2
+- Visual markers for each era with years (1500s, 1850s, 1976)
+- Click to switch between camera models with smooth transitions
 
-Changes made via Lovable will be committed automatically to this repo.
+#### Camera 1: The Pinhole (V0 - Alpha)
+**"The Code Source"**
+- Low-poly wooden box with visible pinhole, rotatable 3D model
+- Context Panel: Quote from da Vinci on light physics
+- Interaction: Aperture Size slider
+  - At 0: Complete darkness
+  - Sweet spot: Sharp projected image
+  - Max: Overblown and blurry
+- Learning: "Light Physics 101"
 
-**Use your preferred IDE**
+#### Camera 2: Sinar 4x5 View Camera (V1 - The Configurable)
+**"The System Administrator's Tool"**
+- Low-poly large format camera with bellows (accordion), on rail system
+- Context Panel: "Used by Atget and architects. Like modifying environment parameters."
+- Interaction: Shift/Tilt toggle buttons
+  - Shift: Lens plane moves, corrects converging verticals (building perspective)
+  - Tilt: Focus plane rotates, Scheimpflug principle demonstration
+- Visual Feedback: Split view showing before/after of architectural correction
+- Learning: "Advanced Configuration"
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+#### Camera 3: Canon AE-1 (V2 - The Speed)
+**"The Decisive Moment"**
+- Low-poly chrome/black 1980s SLR, classic styling
+- Context Panel: "The arrival of electronics. Now it's about capturing Time."
+- Interaction: Shutter Speed dial (1/15 → 1/60 → 1/125 → 1/500)
+- Game Mechanic:
+  - Moving subject appears on screen
+  - User sets speed and clicks "SHOOT"
+  - 1/15: Motion blur (failed)
+  - 1/500: Frozen sharp image (success!)
+- Learning: "Performance Optimization"
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+#### Unlock Mechanic
+- Each camera has a "mastery" indicator
+- Complete all 3 interactions to unlock Slide 3
+- Progress saved to local storage
 
-Follow these steps:
+### Slide 3: Grain vs. Noise Comparison
+Side-by-side comparison view
+- Left: Analog Grain - Organic texture with clickable hotspots
+- Right: Digital Noise - Pixelated artifacts with hotspots
+
+### Slide 4: Historical Glitch — Bayard
+**The First Fake News (1840)**
+- Large display of Hippolyte Bayard's self-portrait as a drowned man
+- "DEBUG" button reveals glitch overlay with the story
+- First photographic manipulation as protest art
+
+### Slide 5: Artist Portfolio (Morvan & Cyanotype)
+- Horizontal gallery with Punctum Mode
+- Smooth horizontal scrolling gallery of B&W photos
+- Punctum Mode: Hover on focal points dims the rest of image
+- Lazy-loaded for performance
+
+## Technical Implementation
+
+- **3D Strategy**: Low-poly stylized models using React Three Fiber, optimized geometry
+- **Fallback**: If 3D causes performance issues, uses parallax 2D layers with depth effect
+- **Animations**: Framer Motion for vertical parallax slide transitions
+- **State**: Local storage for camera mastery progress
+- **Styling**: Dark theme with Tailwind CSS
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js & npm (install with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
+# Clone the repository
 git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Navigate to the project directory
+cd dark-aperture-gallery
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Install dependencies
+npm install
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start the development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The application will be available at `http://localhost:8080`
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Build for Production
 
-**Use GitHub Codespaces**
+```sh
+npm run build
+```
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The built files will be in the `dist` directory.
 
-## What technologies are used for this project?
+## Technologies Used
 
-This project is built with:
+- **Vite** - Build tool and dev server
+- **TypeScript** - Type safety
+- **React** - UI framework
+- **React Three Fiber** - 3D graphics
+- **Framer Motion** - Animations
+- **shadcn-ui** - UI components
+- **Tailwind CSS** - Styling
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Project Structure
 
-## How can I deploy this project?
+```
+src/
+├── components/
+│   ├── presentation/     # Slide container and navigation
+│   ├── slides/          # Individual slide components
+│   ├── three/           # 3D camera models
+│   └── ui/              # shadcn-ui components
+├── hooks/               # Custom React hooks
+├── pages/               # Page components
+└── lib/                 # Utility functions
+```
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+## License
 
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+This project is private and proprietary.
